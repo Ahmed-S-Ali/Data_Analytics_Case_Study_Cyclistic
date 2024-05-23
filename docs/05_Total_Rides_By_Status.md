@@ -5,7 +5,7 @@ Total Trips By Status
 
 ``` r
 # Render the R Markdown file "1_Importing_Packages.Rmd" to import the packages.
-rmarkdown::render("1_Importing_Packages.Rmd")
+rmarkdown::render("01_Importing_Packages.Rmd")
 ```
 
 ## Importing Dataset
@@ -44,7 +44,7 @@ ggplot(bike_trips, aes(member_casual, fill = str_to_title(member_casual))) + geo
            fontface = "bold", size = 4)
 ```
 
-![](./assets/Status.png)<!-- -->
+![](05_Total_Rides_By_Status_files/figure-gfm/Status%20Plot-1.png)<!-- -->
 
 ## Summary
 
