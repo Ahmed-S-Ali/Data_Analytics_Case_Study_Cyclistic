@@ -1,6 +1,6 @@
 # <h1 align="center"> Cyclistic Bike-share Analysis Case Study
 
-## Introduction
+# Introduction
 
 This case study is the [Capstone Project](https://www.coursera.org/learn/google-data-analytics-capstone) of [Google Data Analytics Professional Certificate](https://www.coursera.org/professional-certificates/google-data-analytics). In this case study I am working as a junior data analyst in the marketing analyst team at Cyclistic, a fictional bike-share company in Chicago.
 
@@ -12,7 +12,7 @@ This case study is the [Capstone Project](https://www.coursera.org/learn/google-
 > [!NOTE]
 > For Source Codes check them from here: [*Source Codes*](./codes/)
 
-## Background
+# Background
 
 -   **Project Focus:** Analyzing user behavior and trends in the
     bike-sharing industry.
@@ -32,7 +32,7 @@ This case study is the [Capstone Project](https://www.coursera.org/learn/google-
     insights for optimizing services and targeting marketing strategies
     within the bike-sharing market.
 
-## Tools
+# Tools
 
 -   [**R**](https://www.r-project.org/) [![R
     Logo](./assets/r-lang.svg)](https://www.r-project.org/)
@@ -102,33 +102,33 @@ This case study is the [Capstone Project](https://www.coursera.org/learn/google-
     platform. These tools facilitate efficient team collaboration and
     ensure the integrity and traceability of project versions.
 
-## Objectives
+# Objectives
 
-### 1) Packages
+## 1) Packages
 > [!TIP]
 > Notebook Code: [**Importing Packages Code**](./docs/1_Importing_Packages.md)
 > 
 > Code: [**Importing Packages Code**](./codes/1_Importing_Packages.Rmd)
 
-### 2) Datasets
+## 2) Datasets
 > [!TIP]
 > Notebook Code: [**Importing Datasets Code**](./codes/2_Importing_Datasets.md)
 > 
 > Code: [**Importing Datasets Code**](./codes/2_Importing_Datasets.Rmd)
 
-### 3) Data Preparation
+## 3) Data Preparation
 > [!TIP]
 > Notebook Code: [**Preparation Code**](./codes/3_Data_Preparation.md)
 > 
 > Code: [**Preparation Code**](./codes/3_Data_Preparation.Rmd)
 
-### 4) Data Exploration
+## 4) Data Exploration
 > [!TIP]
 > Notebook Code: [**Exploration Code**](./codes/4_Data_Exploration.md)
 > 
 > Code: [**Exploration Code**](./codes/4_Data_Exploration.Rmd)
 
-### 5) Total Rides By Riders Status
+## 5) Total Rides By Riders Status
 > [!TIP]
 > Notebook Code: [**Riders Status Code**](./codes/5_Total_Rides_By_Status.md)
 > 
@@ -136,7 +136,7 @@ This case study is the [Capstone Project](https://www.coursera.org/learn/google-
 
 [**Riders Status Plot**](./assets/Status.png) [![Plot](./assets/Status.png)](./assets/Status.png)
 
-### 6) Total Rides By Hours
+## 6) Total Rides By Hours
 > [!TIP]
 > Notebook Code: [**Hours Code**](./codes/6_Total_Rides_By_Hours.md)
 > 
@@ -144,7 +144,7 @@ This case study is the [Capstone Project](https://www.coursera.org/learn/google-
 
 [**Hours Plot**](./assets/Hours.png) [![Plot](./assets/Hours.png)](./assets/Hours.png)
 
-### 7) Total Rides By Months
+## 7) Total Rides By Months
 > [!TIP]
 > Notebook Code: [**Months Code**](./codes/7_Total_Rides_By_Months.md)
 > 
@@ -152,7 +152,7 @@ This case study is the [Capstone Project](https://www.coursera.org/learn/google-
 
 [**Months Plot**](./assets/Months.png) [![Plot](./assets/Months.png)](./assets/Months.png)
 
-### 8) Total Rides By Seasons
+## 8) Total Rides By Seasons
 > [!TIP]
 > Notebook Code: [**Seasons Code**](./codes/8_Total_Rides_By_Seasons.md)
 > 
@@ -160,7 +160,7 @@ This case study is the [Capstone Project](https://www.coursera.org/learn/google-
 
 [**Seasons Plot**](./assets/Seasons.png) [![Plot](./assets/Seasons.png)](./assets/Seasons.png)
 
-### 9) Total Rides By Weekdays
+## 9) Total Rides By Weekdays
 > [!TIP]
 > Notebook Code: [**Weekdays Code**](./codes/9_Total_Rides_By_Weekdays.md)
 > 
@@ -168,7 +168,7 @@ This case study is the [Capstone Project](https://www.coursera.org/learn/google-
 
 [**Weekdays Plot**](./assets/Weekdays.png) [![Plot](./assets/Weekdays.png)](./assets/Weekdays.png)
 
-### 10) Total Rides By Trips Duration
+## 10) Total Rides By Trips Duration
 > [!TIP]
 > Notebook Code: [**Duration Code**](./codes/10_Total_Rides_By_Duration.md)
 > 
@@ -176,7 +176,7 @@ This case study is the [Capstone Project](https://www.coursera.org/learn/google-
 
 [**Duration Plot**](./assets/Duration.png) [![Plot](./assets/Duration.png)](./assets/Duration.png)
 
-### 11) Total Rides By Bike Types
+## 11) Total Rides By Bike Types
 > [!TIP]
 > Notebook Code: [**Bike Types Code**](./codes/11_Total_Rides_By_Bike_Types.md)
 > 
@@ -184,6 +184,6 @@ This case study is the [Capstone Project](https://www.coursera.org/learn/google-
 
 [**Bike Types Plot**](./assets/Types.png) [![Plot](./assets/Types.png)](./assets/Types.png)
 
-## Resources
+# Resources
 > [!NOTE]
 > **Source:** [**Google Data Analytics Professional Certificate**](https://www.coursera.org/professional-certificates/google-data-analytics)
