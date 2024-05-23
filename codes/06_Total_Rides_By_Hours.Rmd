@@ -1,0 +1,100 @@
+---
+title: "Total Trips By Hours"
+output: github_document
+---
+
+Importing Packages
+------------------
+```{r Importing File 1 (Packages), message=FALSE, warning=FALSE, results='hide'}
+# Render the R Markdown file "1_Importing_Packages.Rmd" to import the packages.
+rmarkdown::render("01_Importing_Packages.Rmd")
+```
+
+Importing Dataset
+-----------------
+```{r Importing Cleaned Dataset}
+# Importing the cleaned dataset from the previously saved RDS file 3.
+bike_trips <- readRDS(here("bike_trips_data.rds"))
+```
+
+Labels
+------
+```{r Labeling for Weekdays}
+# Create a vector with members/casual most taken trips and trips count.
+day_label = c(" - Mostly Member At 12 PM | Total 34,981 Rides\n - Mostly Casual    At  3  PM | Total 33,742 Rides",
+              " - Mostly Member At 5 PM | Total 70,199 Rides\n - Mostly Casual    At 5 PM | Total 28,248 Rides",
+              " - Mostly Member At 5 PM | Total 57,428 Rides\n - Mostly Casual    At 5 PM | Total 24,187 Rides",
+              " - Mostly Member At 3 PM | Total 32,879 Rides\n - Mostly Casual    At 3 PM | Total 30,028 Rides",
+              " - Mostly Member At 5 PM | Total 68,310 Rides\n - Mostly Casual    At 5 PM | Total 30,414 Rides",
+              " - Mostly Member At 5 PM | Total 70,350 Rides\n - Mostly Casual    At 5 PM | Total 29,436 Rides",
+              " - Mostly Member At 5 PM | Total 52,329 Rides\n - Mostly Casual    At 5 PM | Total 30,014 Rides")
+
+# Create a data frame 'dataframe_labels' with unique values of 'day' from 'bike_trips' and corresponding labels,
+# for the annotation text.
+dataframe_labels <- data.frame(day = unique(bike_trips$day), 
+                               label = day_label)
+```
+
+Plot
+----
+```{r Hours Plot, fig.width=12, fig.height=12}
+# Create a bar plot for Number of Trips by Hours of bike trips data with ggplot.
+ggplot(bike_trips) + geom_bar(aes(start_time, fill = str_to_title(member_casual))) +
+  
+  # Create facets for each day with free x-axis scales.
+  facet_wrap(~day, scales = "free_x") + 
+  
+  # Set manual fill colors for rider type.
+  scale_fill_manual(values = c("#990F02","#228B22")) +
+  
+  # Set specific x-axis breaks for hours and y-axis labels with comma separators.
+  scale_x_continuous(breaks = c(0, 5, 10, 15, 20, 23)) + scale_y_continuous(labels = comma) +
+  
+  # Set plot title label, axis labels, and legend box label.
+  labs(title = "Number of Trips by Hours With Riders Type per Weekdays",
+       x = "Hours",
+       y = "Total Trips",
+       fill = "Status") + 
+  
+  # Apply a dark gray theme to the plot from ggdark package.
+  dark_theme_gray() + 
+  
+  # Set plot title alignment to center, make X and Y axis labels bold.
+  theme(plot.title = element_text(hjust = 0.5, face = "bold"), axis.text = element_text(face = "bold")) +
+  
+  # Add labeled text annotations at specified coordinates.
+  geom_text(data = dataframe_labels, aes(x = 10, y = 87500, label = label), fontface = "bold", size = 3)
+```
+
+Summary
+-------
+```{r Summary of Hours}
+# Start a pipeline with the bike_trips dataset.
+bike_trips %>%
+  
+  # Convert member_casual values to title case.
+  mutate(member_casual = str_to_title(member_casual)) %>%
+  
+  # Group by rider type, day, and start time.
+  group_by(member_casual, day, start_time) %>%
+  
+  # Summarize total trips, drop intermediate grouping levels to avoid the message.
+  summarise(total_count = n(), .groups = "drop") %>%
+  
+  # Group by rider type and day.
+  group_by(member_casual, day) %>%
+  
+  # Filter rows with maximum total rides for each rider type and day.
+  filter(total_count == max(total_count)) %>%
+  
+  # Arrange rows by day in ascending order and total rides in descending.
+  arrange(day, desc(total_count)) %>%
+  
+  # Format total rides with comma separators.
+  mutate(total_count = comma(total_count)) %>%
+  
+  # Create a table with a caption, column alignments, and custom column names.
+  kable(caption = "Max Total Trips by Riders Type Per Weekday",
+        align = "c",
+        col.names = c("Rider Type", "Weekday", "24-hour Time", "Total Count"))
+```

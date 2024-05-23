@@ -1,0 +1,91 @@
+---
+title: "Total Trips By Trip Duration"
+output: github_document
+---
+
+Importing Packages
+------------------
+```{r Importing File 1 (Packages), message=FALSE, warning=FALSE, results='hide'}
+# Render the R Markdown file "1_Importing_Packages.Rmd" to import the packages.
+rmarkdown::render("01_Importing_Packages.Rmd")
+```
+
+Importing Dataset
+-----------------
+```{r Importing Cleaned Dataset}
+# Importing the cleaned dataset from the previously saved RDS file 3.
+bike_trips <- readRDS(here("bike_trips_data.rds"))
+```
+
+Labels
+------
+```{r Labeling}
+# Create a vector with duration labels for members and casual riders.
+duration_label = c(
+  "- Members typically take shorter trips than Casual riders\nBut Members total number of bike rides is higher",
+  "- Although Casual riders tend to take longer trips\nMembers make more overall bike trips")
+
+# Create a data frame 'df_labels' with unique values of 'member_casual' from 'bike_trips' and corresponding labels
+# for the annotation text
+df_labels <- data.frame(member_casual = unique(bike_trips$member_casual), 
+                        label = duration_label)
+```
+
+Plot
+----
+```{r Duration Plot, fig.width=12, fig.height=12}
+# Create a ggplot object, filtering 'bike_trips' dataset to include only trips with duration <= 180 minutes.
+ggplot(filter(bike_trips, duration <= 180)) + 
+  
+  # Creating a bar plot, Showing the number of trips by trips duration in minutes, Create facets for each rider.
+  geom_bar(aes(duration, fill = str_to_title(member_casual))) + facet_wrap(~str_to_title(member_casual)) +
+  
+  # Set Y-axis labels with comma separators and visually appealing breaks.
+  scale_y_continuous(labels = comma, breaks = pretty_breaks(n = 7)) + 
+  
+  # Set manual fill colors for rider type.
+  scale_fill_manual(values = c("#990F02","#228B22")) +
+  
+  # Set plot title label, axis labels, and legend box label.
+  labs(title = "Number of Trips by Duration in Minutes",
+       x = "Duration in Minutes",
+       y = "Total Trips",
+       fill = "Status") + 
+  
+  # Apply a dark gray theme to the plot.
+  dark_theme_gray() + 
+  
+  # Set plot title alignment to center, make X and Y axis labels bold.
+  theme(plot.title= element_text(hjust = 0.5),
+        axis.text = element_text(face = "bold")) +
+  
+  # Add labeled text annotations at specified coordinates.
+  geom_text(data = df_labels, aes(x = 100, y = 275000, label = label), fontface = "bold", size = 4)
+```
+
+Summary
+-------
+```{r Duration Summary}
+# Start a pipeline with the bike_trips dataset.
+bike_trips %>%
+  
+  # Filter the rows to include only trips with a duration of 60 minutes or less.
+  filter(duration <= 60) %>% 
+  
+  # Group by member_casual (converted to title case) and duration
+  group_by(str_to_title(member_casual), duration) %>%
+  
+  # Summarize total trips, drop intermediate grouping levels to avoid the message.
+  summarise(total_count = n(), .groups = "drop") %>% 
+  
+  # Arrange rows by total_count in descending order.
+  arrange(desc(total_count)) %>% 
+  
+  # Format total counts with comma separators.
+  mutate(total_count = comma(total_count)) %>% 
+  
+  # Create a table with a caption, column alignments, and custom column names.
+  kable(caption = "Total Trips by Riders Type Per Weekday",
+        align = "c",
+        col.names = c("Rider Type", "Duration in Minutes", "Total Count"))
+```

@@ -1,0 +1,93 @@
+---
+title: "Data Preparation"
+output: github_document
+---
+
+1) Importing First File
+-----------------------
+```{r Importing File 1 (Packages), message=FALSE, warning=FALSE, results='hide'}
+# Render the R Markdown file "1_Importing_Packages.Rmd" to import the packages.
+rmarkdown::render("01_Importing_Packages.Rmd")
+```
+
+2) Reading The Dataset
+----------------------
+```{r Importing Saved Dataset}
+# Importing the dataset from the previously saved RDS file 2.
+bike_trips <- readRDS(here("bike_trips_data.rds"))
+```
+
+3) Counting Rows Before Cleaning
+--------------------------------
+```{r Count of Rows}
+# Importing the combined dataset from the previously saved RDS file.
+nrow(bike_trips)
+```
+
+4) Checking NA
+--------------
+```{r Checking for NA Data}
+# Generating a summary table of NA values for each column in the dataset.
+# Using kable for better visualizing.
+kable(colSums(is.na(bike_trips)))
+```
+
+5) Removing Unnecessary Columns
+-------------------------------
+```{r Removing Columns Except The Selected Columns}
+# Selecting specific columns from the dataset and storing the result into "bike_trips".
+bike_trips <- bike_trips %>% select(c(rideable_type, started_at, ended_at, member_casual))
+```
+
+6) Removing Empty Rows
+----------------------
+```{r Cleaning Dataset}
+# Removing rows and columns with missing values from the dataset.
+bike_trips <- remove_empty(bike_trips, which = c("rows", "cols"))
+
+# Removing duplicate rows from the dataset.
+bike_trips <- distinct(bike_trips)
+```
+
+7) Head
+-------
+```{r First 5 Rows}
+# Displaying the first 5 rows of the cleaned dataset in a table format using kable.
+kable(head(bike_trips))
+```
+
+8) Tail
+-------
+```{r Last 5 Rows}
+# Displaying the last 5 rows of the cleaned dataset in a table format using kable.
+kable(tail(bike_trips))
+```
+
+9) Structure
+------------
+```{r Structure of Dataset}
+# Displaying the structure of the 'bike_trips' dataset.
+str(bike_trips)
+```
+
+10) Summary
+-----------
+```{r Summary of Dataset}
+# Creating a summary table of the 'bike_trips' dataset in a table format using kable.
+kable(summary(bike_trips))
+```
+
+11) Filter
+----------
+```{r Filtering Year to 2023 Only}
+# Filtering the 'bike_trips' dataset to include only rows where the 'ended_at' year is less than 2024.
+bike_trips <- bike_trips %>% filter(year(ended_at) < 2024)
+```
+
+12) Saving Dataset
+------------------
+```{r Saving Cleaned Dataset}
+# Saving the cleaned dataset as an RDS file to ensure that the cleaned dataset can be easily reloaded,
+# and used in future analyses without needing to repeat the cleaning steps.
+saveRDS(bike_trips, here("bike_trips_data.rds"))
+```
