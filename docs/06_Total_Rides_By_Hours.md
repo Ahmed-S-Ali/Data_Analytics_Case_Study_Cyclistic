@@ -5,7 +5,7 @@ Total Trips By Hours
 
 ``` r
 # Render the R Markdown file "1_Importing_Packages.Rmd" to import the packages.
-rmarkdown::render("1_Importing_Packages.Rmd")
+rmarkdown::render("01_Importing_Packages.Rmd")
 ```
 
 ## Importing Dataset
@@ -67,7 +67,7 @@ ggplot(bike_trips) + geom_bar(aes(start_time, fill = str_to_title(member_casual)
     ## Inverted geom defaults of fill and color/colour.
     ## To change them back, use invert_geom_defaults().
 
-![](6_Total_Rides_By_Hours_files/figure-gfm/Hours%20Plot-1.png)<!-- -->
+![](06_Total_Rides_By_Hours_files/figure-gfm/Hours%20Plot-1.png)<!-- -->
 
 ## Summary
 

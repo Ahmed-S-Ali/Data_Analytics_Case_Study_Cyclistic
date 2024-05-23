@@ -5,7 +5,7 @@ Total Trips By Bike Types
 
 ``` r
 # Render the R Markdown file "1_Importing_Packages.Rmd" to import the packages.
-rmarkdown::render("1_Importing_Packages.Rmd")
+rmarkdown::render("01_Importing_Packages.Rmd")
 ```
 
 ## Importing Dataset

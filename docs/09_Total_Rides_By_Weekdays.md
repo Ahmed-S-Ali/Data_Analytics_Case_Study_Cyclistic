@@ -5,7 +5,7 @@ Total Trips By Weekdays
 
 ``` r
 # Render the R Markdown file "1_Importing_Packages.Rmd" to import the packages.
-rmarkdown::render("1_Importing_Packages.Rmd")
+rmarkdown::render("01_Importing_Packages.Rmd")
 ```
 
 ## Importing Dataset
@@ -48,7 +48,7 @@ ggplot(bike_trips, aes(day, fill = str_to_title(member_casual))) + geom_bar(posi
     ## Inverted geom defaults of fill and color/colour.
     ## To change them back, use invert_geom_defaults().
 
-![](9_Total_Rides_By_Weekdays_files/figure-gfm/Weekdays%20Plot-1.png)<!-- -->
+![](09_Total_Rides_By_Weekdays_files/figure-gfm/Weekdays%20Plot-1.png)<!-- -->
 
 ## Summary
 

@@ -5,7 +5,7 @@ Total Trips By Seasons
 
 ``` r
 # Render the R Markdown file "1_Importing_Packages.Rmd" to import the packages.
-rmarkdown::render("1_Importing_Packages.Rmd")
+rmarkdown::render("01_Importing_Packages.Rmd")
 ```
 
 ## Importing Dataset
@@ -50,7 +50,7 @@ ggplot(bike_trips, aes(season, fill = str_to_title(member_casual))) + geom_bar(p
     ## Inverted geom defaults of fill and color/colour.
     ## To change them back, use invert_geom_defaults().
 
-![](8_Total_Rides_By_Seasons_files/figure-gfm/Seasons%20Plot-1.png)<!-- -->
+![](08_Total_Rides_By_Seasons_files/figure-gfm/Seasons%20Plot-1.png)<!-- -->
 
 ## Summary
 
