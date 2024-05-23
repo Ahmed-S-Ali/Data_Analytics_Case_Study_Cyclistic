@@ -44,7 +44,7 @@ ggplot(bike_trips, aes(member_casual, fill = str_to_title(member_casual))) + geo
            fontface = "bold", size = 4)
 ```
 
-![](5_Total_Rides_By_Status_files/figure-gfm/Status%20Plot-1.png)<!-- -->
+![](./assets/Status%20Plot-1.png)<!-- -->
 
 ## Summary
 
