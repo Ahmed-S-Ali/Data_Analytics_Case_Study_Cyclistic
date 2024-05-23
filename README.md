@@ -1,12 +1,10 @@
+# <h1 align="center"> Cyclistic Bike-share Analysis Case Study
+
 ## Introduction
 
-**Cyclistic** is a fictional company that has a bike share program and
-has many customers. The director of the marketing believes the
-comapany’s future depends on maximizing certain types of customer. You,
-a part of the data analyst team, has been asked to answer few question.
-You’ll be provided with a data source to not only answer these question,
-but aslo you’d be asked to share your insights and three top most
-recommendation on how to proceed with things.
+This case study is the [Capstone Project](https://www.coursera.org/learn/google-data-analytics-capstone) of [Google Data Analytics Professional Certificate](https://www.coursera.org/professional-certificates/google-data-analytics). In this case study I am working as a junior data analyst in the marketing analyst team at Cyclistic, a fictional bike-share company in Chicago.
+
+**Cyclistic** is a bike-share program that features more than 5,800 bicycles and 600 docking stations. Cyclistic sets itself apart by also offering reclining bikes, hand tricycles, and cargo bikes, making bike-share more inclusive to people with disabilities and riders who can’t use a standard two-wheeled bike. The majority of riders opt for traditional bikes; about 8% of riders use the assistive options. Cyclistic users are more likely to ride for leisure, but about 30% use them to commute to work each day.
 
 > [!IMPORTANT]
 > Codes? Check them out from here: [*Notebook codes*](./docs/)
