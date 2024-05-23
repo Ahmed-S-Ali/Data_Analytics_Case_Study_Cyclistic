@@ -11,8 +11,8 @@ rmarkdown::render("01_Importing_Packages.Rmd")
 ## 2) Importing CSV Files
 
 ``` r
-# Setting the path where the CSV files are stored.
-dataset_path <- "E:\\Programming\\Projects\\Google_Case_Study\\dataset\\"
+# Setting the path where the CSV files are stored (Change "[file_path]" with actual folder path).
+dataset_path <- "[file_path]\\"
 
 # Generating a vector containing paths to individual CSV files.
 files_path <- paste0(dataset_path, c(
